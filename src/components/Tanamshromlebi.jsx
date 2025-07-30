@@ -123,7 +123,7 @@ export default function Tanamshromlebi() {
 
       <motion.div
         variants={containerVariants}
-        className="w-full px-4 sm:px-10 lg:px-20 pb-10 mt-20 grid gap-25  sm:gap-8 md:gap-25 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-10 pb-10 mt-20 flex flex-wrap justify-center gap-21"
       >
         {workers.map((worker, index) => (
           <motion.div key={index} variants={cardVariants}>
