@@ -12,25 +12,14 @@ export default function Homepage() {
       <Header />
 
       <div className="flex-grow flex flex-col h-screen justify-center items-center relative px-4 text-center">
-        <AnimatePresence>
-          {" "}
-          <motion.div
-            layout={false}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="logotext font-bold text-[10px] sm:text-[12px] md:text-[14px] lg:text-[15px] absolute top-[172px] sm:top-[178px] md:top-[155px] text-[#9b9b9b]"
-          >
-            საჭე
-          </motion.div>
-        </AnimatePresence>
+      
         <motion.img
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           src="/Logo.png"
           alt="Logo"
-          className="w-[200px] sm:w-[250px] md:w-[300px] rounded-full mb-4"
+          className="w-[200px] sm:w-[250px] md:w-[300px] lg:w-[200px] rounded-full mb-4"
         />
 
         <motion.h1
