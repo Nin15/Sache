@@ -33,18 +33,28 @@ const cardVariants = {
 
 export default function Tanamshromlebi() {
   const workers = [
+    // {
+    //   name: "გრიგოლ მაღრაძე (გია)",
+    //   description: "20+ წლიანი გამოცდილება.",
+    //   image: "/images/worker1.jpg",
+    //   position: "დირექტორი",
+    // },
+    // {
+    //   name: "მამუკა კაპანაძე",
+    //   description:
+    //     "15+ წლიანი გამოცდილება. აწყობილი აქვს 3000-ზე მეტი საჭის მექანიზმი.",
+    //   image: "/images/worker2.jpg",
+    //   position: "დირექტორის მოადგილე",
+    // },
     {
-      name: "გრიგოლ მაღრაძე (გია)",
-      description: "20+ წლიანი გამოცდილება.",
-      image: "/images/worker1.jpg",
-      position: "დირექტორი",
+      name: "რამაც კელენჯერიძე (რეზო)",
+      image: "/images/worker3.jpg",
+      position: "მენეჯერი",
     },
     {
-      name: "მამუკა კაპანაძე",
-      description:
-        "15+ წლიანი გამოცდილება. აწყობილი აქვს 3000-ზე მეტი საჭის მექანიზმი.",
-      image: "/images/worker2.jpg",
-      position: "დირექტორის მოადგილე",
+      name: "დავით ნებიერიძე",
+      image: "/images/worker4.jpg",
+      position: "მენეჯერი",
     },
     {
       name: "გოგი ჩხარტიშვილი (გოგიტა)",
@@ -52,18 +62,7 @@ export default function Tanamshromlebi() {
       image: "/images/worker5.jpg",
       position: "ხელოსანი",
     },
-    {
-      name: "ალექსანდრე გოგოლაშვილი (ალეკო)",
-      description: "8+ წლიანი გამოცდილება.",
-      image: "/images/worker10.jpg",
-      position: "ხარატი",
-    },
-    {
-      name: "ირაკლი ჩინჩალაძე ",
-      description: "6+ წლიანი გამოცდილება.",
-      image: "/images/worker9.jpg",
-      position: "ხარატი",
-    },
+
     {
       name: "გაგა სამხარაძე",
       description: "5+ წლიანი გამოცდილება.",
@@ -83,14 +82,16 @@ export default function Tanamshromlebi() {
       position: "ხელოსანი",
     },
     {
-      name: "რამაც კელენჯერიძე (რეზო)",
-      image: "/images/worker3.jpg",
-      position: "მენეჯერი",
+      name: "ალექსანდრე გოგიაშვილი (ალეკო)",
+      description: "8+ წლიანი გამოცდილება.",
+      image: "/images/worker10.jpg",
+      position: "ხარატი",
     },
     {
-      name: "დავით ნებიერიძე",
-      image: "/images/worker4.jpg",
-      position: "მენეჯერი",
+      name: "ირაკლი ჩინჩალაძე ",
+      description: "6+ წლიანი გამოცდილება.",
+      image: "/images/worker9.jpg",
+      position: "ხარატი",
     },
   ];
 
@@ -120,10 +121,21 @@ export default function Tanamshromlebi() {
           <Sparkles className="text-yellow-400" size={18} />
         </p>
       </motion.div>
-
+      <motion.div className=" md:flex md:gap-20  " variants={cardVariants}>
+        <Card
+          name="გრიგოლ მაღრაძე (გია)"
+          description="20+ წლიანი გამოცდილება."
+          position="დირექტორი"
+        />
+        <Card
+          name="მამუკა კაპანაძე"
+          description="15+ წლიანი გამოცდილება. აწყობილი აქვს 3000-ზე მეტი საჭის მექანიზმი."
+          position="დირექტორის მოადგილე"
+        />
+      </motion.div>
       <motion.div
         variants={containerVariants}
-        className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-10 pb-10 mt-20 flex flex-wrap justify-center gap-21"
+        className="w-full max-w-[1200px] mx-auto px-4 sm:px-6  mt-21 lg:px-10 pb-10 flex flex-wrap justify-center gap-21"
       >
         {workers.map((worker, index) => (
           <motion.div key={index} variants={cardVariants}>

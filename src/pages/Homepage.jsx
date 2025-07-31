@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
+import { Copyright } from "lucide-react";
 
 export default function Homepage() {
   const navigate = useNavigate();
@@ -12,7 +13,6 @@ export default function Homepage() {
       <Header />
 
       <div className="flex-grow flex flex-col h-screen justify-center items-center relative px-4 text-center">
-      
         <motion.img
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -35,7 +35,7 @@ export default function Homepage() {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="text-sm sm:text-base text-gray-400 mb-6"
+          className="text-[17px] sm:text-xl text-[#848282] mb-6"
         >
           თქვენი უსაფრთხო მგზავრობისთვის
         </motion.p>
@@ -53,6 +53,13 @@ export default function Homepage() {
           — ირჩევთ სიმშვიდეს.
         </motion.h2>
       </div>
+      <motion.p
+       
+        className="absolute text-gray-700 text-[9px] sm:text-[10px] flex items-center gap-1 bottom-3 left-1/2 transform -translate-x-1/2"
+      >
+        <Copyright className="w-[14px]" />
+        2025 საჭე - All Rights Reserved{" "}
+      </motion.p>
     </div>
   );
 }

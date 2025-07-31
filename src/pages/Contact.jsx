@@ -6,12 +6,10 @@ import { MapPin, Phone, Clock } from "lucide-react";
 export default function Contact() {
   return (
     <div className="bg-[#121212] min-h-screen text-white">
-      {/* Header */}
       <div className="fixed top-0 w-full z-30">
         <Header />
       </div>
 
-      {/* Main content */}
       <div className="relative w-full flex flex-col items-center justify-center pt-32 px-4 sm:px-6">
         <div className="max-w-3xl w-full mx-auto py-10">
           <motion.h1
@@ -23,7 +21,6 @@ export default function Contact() {
             დაგვიკავშირდით
           </motion.h1>
 
-          {/* Contact Info */}
           <div className="space-y-6 text-base md:text-lg text-gray-300">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -58,12 +55,11 @@ export default function Contact() {
                 - ორშაბათი-პარასკევი: 9:00 - 19:00 სთ.
                 <br />
                 - შაბათი: 9:00 - 17:00 სთ.
-                <br />- კვირა და სადღესასწაულო დღეები - დასვენება.
+                <br />- კვირა და სადღესასწაულო დღეები: დასვენება.
               </p>
             </motion.div>
           </div>
 
-          {/* Google Map */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -81,7 +77,6 @@ export default function Contact() {
             ></iframe>
           </motion.div>
 
-          {/* Call to Action Button */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
