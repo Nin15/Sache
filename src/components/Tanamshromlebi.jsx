@@ -47,7 +47,7 @@ export default function Tanamshromlebi() {
     //   position: "დირექტორის მოადგილე",
     // },
     {
-      name: "რამაც კელენჯერიძე (რეზო)",
+      name: "რამაზ კელენჯერიძე (რეზო)",
       image: "/images/worker3.jpg",
       position: "მენეჯერი",
     },
