@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Clock } from "lucide-react";
-import "../App.css"
+import "../App.css";
 
 export default function Contact() {
   return (
@@ -78,7 +78,7 @@ export default function Contact() {
           >
             <iframe
               title="Company Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2977.225335562528!2d44.747959775252376!3d41.737232274223516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x404472feca023dc9%3A0xcf0caf36ffc2b0c8!2zMSDhg5vhg6Phg67hg6Dhg5Dhg5wg4YOb4YOQ4YOt4YOQ4YOV4YOQ4YOg4YOY4YOQ4YOc4YOY4YOhIOGDpeGDo-GDqeGDkCwg4YOX4YOR4YOY4YOa4YOY4YOh4YOY!5e0!3m2!1ska!2sge!4v1753888534199!5m2!1ska!2sge"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2976.417956892042!2d44.759613800000004!3d41.7546457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4044730074b94d09%3A0xbe542c60ce8ad852!2sSache%20(gia)!5e0!3m2!1sen!2sge!4v1754077218438!5m2!1sen!2sge"
               width="100%"
               height="100%"
               allowFullScreen=""
