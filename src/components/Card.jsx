@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "../App.css"
+import "../App.css";
 
-export default function Card({ name, position, description, image }) {
+export default function Card({ name, position, description }) {
   const [isLegacy, setIsLegacy] = useState(false);
 
   useEffect(() => {
     const match = navigator.userAgent.match(/Chrome\/(\d+)/);
-    if (match && parseInt(match[1]) < 80) {
+    if (match && parseInt(match[1], 10) <= 109) {
       setIsLegacy(true);
       document.body.classList.add("legacy");
     }
@@ -14,11 +14,15 @@ export default function Card({ name, position, description, image }) {
 
   return (
     <div
-      className={`bg-white flex relative justify-around items-center flex-col shadow-lg w-[310px] h-[320px] rounded-xl p-5 ${
-        !isLegacy ? "transform transition duration-300 hover:scale-105 hover:opacity-100 opacity-80" : "opacity-100"
-      } ${
-        position === "დირექტორის მოადგილე" ? "mt-20 md:mt-0" : ""
-      }`}
+      className={`bg-white flex relative justify-around items-center flex-col shadow-lg w-[310px] h-[320px] rounded-4xl p-5
+        ${
+          isLegacy
+            ? "opacity-100"
+            : "opacity-80 transform transition duration-300 hover:scale-105 hover:opacity-100"
+        }
+        ${
+          position === "დირექტორის მოადგილე" ? "mt-20 md:mt-0" : ""
+        }`}
     >
       <section className="flex flex-col absolute top-10 items-center justify-center">
         <h2
