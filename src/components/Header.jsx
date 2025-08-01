@@ -91,10 +91,10 @@ export default function Header() {
               <span className="block">ჩვენს შესახებ</span>
               <div className="ml-4 space-y-1 text-gray-300">
                 <span onClick={() => { navigate("/About/Chvensshesaxeb"); setMobileNavOpen(false); }} className="block">
-                  ჩვენ
+                  ჩვენი კომპანია
                 </span>
                 <span onClick={() => { navigate("/About/Tanamshromlebi"); setMobileNavOpen(false); }} className="block">
-                  თანამშრომლები
+                  ჩვენი გუნდი
                 </span>
               </div>
             </div>
