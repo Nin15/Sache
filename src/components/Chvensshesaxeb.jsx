@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import Header from "./Header";
 import { motion } from "framer-motion";
 
+// Legacy browser detection (Chrome <= 109)
+const match = navigator.userAgent.match(/Chrome\/(\d+)/);
+const isLegacy = match && parseInt(match[1], 10) <= 109;
+
 const paragraphs = [
   `შპს "საჭე" საქართველოში ავტოსერვისის სფეროში მოქმედი ლიდერი კომპანიაა, რომელიც საქმიანობას ეწევა 2011 წლიდან, ხოლო ამ კომპანიაში მოღვაწე მუშაკებისა და ავტოხელოსნების პროფესიონალიზმი წლების განმავლობაში მათ მიერ შეკეთებული ავტომობილების ხარისხითა და მადლიერი კლიენტების გამოხმაურებებითაა დადასტურებული.`,
 
@@ -17,6 +21,34 @@ export default function Chvensshesaxeb() {
     setIndex((prev) => (prev + 1) % paragraphs.length);
   };
 
+  if (isLegacy) {
+    // ❗Safe fallback for old Chrome
+    return (
+      <div
+        className="min-h-screen bg-black text-white px-6 py-32 text-center flex flex-col justify-center items-center"
+        style={{
+          backgroundImage: "url('/carpic.jpg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <Header />
+        <div className="bg-black/70 p-6 rounded-3xl max-w-3xl shadow-lg">
+          <h1 className="text-3xl font-bold text-blue-400 mb-6">შპს საჭე</h1>
+          <p className="text-lg leading-relaxed mb-4">{paragraphs[index]}</p>
+          <button
+            onClick={nextParagraph}
+            className="mt-4 px-6 py-2 bg-blue-800 hover:bg-blue-600 text-white rounded-xl transition"
+          >
+            შემდეგი ({index + 1})
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // ✅ Modern browser: full animation
   return (
     <motion.div
       initial={{ opacity: 0 }}
