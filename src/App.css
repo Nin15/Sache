@@ -1,3 +1,9 @@
+/* index.css or App.css */
+@import "bpg-mrgvlovani/css/bpg-mrgvlovani.min.css";
+@import "alk-rounded-mtav-med/css/alk-rounded-mtav-med.min.css";
+@import "bpg-banner-extrasquare-caps/css/bpg-banner-extrasquare-caps.min.css";
+
+
 * {
   font-family: "BPG Mrgvlovani", sans-serif;
 }

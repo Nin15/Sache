@@ -1,22 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import "../App.css";
+import { Menu, X } from "lucide-react"; 
+import "../App.css"
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [isLegacy, setIsLegacy] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const match = navigator.userAgent.match(/Chrome\/(\d+)/);
-    if (match && parseInt(match[1], 10) <= 109) {
-      setIsLegacy(true);
-      document.body.classList.add("legacy");
-    }
-  }, []);
 
   return (
     <div className="relative">
@@ -29,70 +20,46 @@ export default function Header() {
         </h1>
 
         <section className="hidden md:flex gap-8 text-sm items-center">
-          <span onClick={() => navigate("/")} className="hover:scale-105 transition cursor-pointer">
+          <span onClick={() => navigate("/")} className="hover:scale-105 transition">
             მთავარი
           </span>
-
           <div
-            className="relative cursor-pointer"
+            className="relative"
             onMouseEnter={() => setMenuOpen(true)}
             onMouseLeave={() => setMenuOpen(false)}
           >
             <span className="hover:scale-105 transition">ჩვენ შესახებ</span>
-
-            {isLegacy ? (
-              menuOpen && (
-                <div className="absolute top-8 bg-white border-2 border-black p-4 rounded-3xl shadow-lg text-black">
+            <AnimatePresence>
+              {menuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute top-8 bg-white border-2 border-black p-4 rounded-3xl shadow-lg text-black"
+                >
                   <div className="flex flex-col gap-2">
                     <span
-                      className="hover:text-blue-700 transition cursor-pointer"
+                      className="hover:text-blue-700 transition"
                       onClick={() => navigate("/About/Chvensshesaxeb")}
                     >
                       ჩვენი კომპანია
                     </span>
                     <span
-                      className="hover:text-blue-700 transition cursor-pointer"
+                      className="hover:text-blue-700 transition"
                       onClick={() => navigate("/About/Tanamshromlebi")}
                     >
                       ჩვენი გუნდი
                     </span>
                   </div>
-                </div>
-              )
-            ) : (
-              <AnimatePresence>
-                {menuOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-8 bg-white border-2 border-black p-4 rounded-3xl shadow-lg text-black"
-                  >
-                    <div className="flex flex-col gap-2">
-                      <span
-                        className="hover:text-blue-700 transition cursor-pointer"
-                        onClick={() => navigate("/About/Chvensshesaxeb")}
-                      >
-                        ჩვენი კომპანია
-                      </span>
-                      <span
-                        className="hover:text-blue-700 transition cursor-pointer"
-                        onClick={() => navigate("/About/Tanamshromlebi")}
-                      >
-                        ჩვენი გუნდი
-                      </span>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            )}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-
-          <span onClick={() => navigate("/Services")} className="hover:scale-105 transition cursor-pointer">
+          <span onClick={() => navigate("/Services")} className="hover:scale-105 transition">
             სერვისები
           </span>
-          <span onClick={() => navigate("/Contact")} className="hover:scale-105 transition cursor-pointer">
+          <span onClick={() => navigate("/Contact")} className="hover:scale-105 transition">
             კონტაქტი
           </span>
         </section>
@@ -101,81 +68,51 @@ export default function Header() {
           დაჯავშვნა
         </button>
 
-        <button className="md:hidden text-white" onClick={() => setMobileNavOpen(!mobileNavOpen)}>
+        <button
+          className="md:hidden text-white"
+          onClick={() => setMobileNavOpen(!mobileNavOpen)}
+        >
           {mobileNavOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </nav>
 
-      {isLegacy ? (
-        mobileNavOpen && (
-          <div className="fixed top-[80px] left-0 right-0 bg-gray-700 z-20 text-white md:hidden p-6 space-y-4">
-            <span onClick={() => { navigate("/"); setMobileNavOpen(false); }} className="block cursor-pointer">
+      <AnimatePresence>
+        {mobileNavOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="fixed top-[80px] left-0 right-0 bg-gray-700 z-20 text-white md:hidden p-6 space-y-4"
+          >
+            <span onClick={() => { navigate("/"); setMobileNavOpen(false); }} className="block">
               მთავარი
             </span>
             <div className="space-y-2">
               <span className="block">ჩვენს შესახებ</span>
               <div className="ml-4 space-y-1 text-gray-300">
-                <span onClick={() => { navigate("/About/Chvensshesaxeb"); setMobileNavOpen(false); }} className="block cursor-pointer">
+                <span onClick={() => { navigate("/About/Chvensshesaxeb"); setMobileNavOpen(false); }} className="block">
                   ჩვენ
                 </span>
-                <span onClick={() => { navigate("/About/Tanamshromlebi"); setMobileNavOpen(false); }} className="block cursor-pointer">
+                <span onClick={() => { navigate("/About/Tanamshromlebi"); setMobileNavOpen(false); }} className="block">
                   თანამშრომლები
                 </span>
               </div>
             </div>
-            <span onClick={() => { navigate("/Services"); setMobileNavOpen(false); }} className="block cursor-pointer">
+            <span onClick={() => { navigate("/Services"); setMobileNavOpen(false); }} className="block">
               სერვისები
             </span>
-            <span onClick={() => { navigate("/Contact"); setMobileNavOpen(false); }} className="block cursor-pointer">
+            <span onClick={() => { navigate("/Contact"); setMobileNavOpen(false); }} className="block">
               კონტაქტი
             </span>
             <button
-              onClick={() => setMobileNavOpen(false)}
+              onClick={() => { setMobileNavOpen(false); }}
               className="w-full bg-blue-800 text-white py-2 rounded-xl mt-4 hover:bg-blue-600 transition"
             >
               დაჯავშვნა
             </button>
-          </div>
-        )
-      ) : (
-        <AnimatePresence>
-          {mobileNavOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="fixed top-[80px] left-0 right-0 bg-gray-700 z-20 text-white md:hidden p-6 space-y-4"
-            >
-              <span onClick={() => { navigate("/"); setMobileNavOpen(false); }} className="block cursor-pointer">
-                მთავარი
-              </span>
-              <div className="space-y-2">
-                <span className="block">ჩვენს შესახებ</span>
-                <div className="ml-4 space-y-1 text-gray-300">
-                  <span onClick={() => { navigate("/About/Chvensshesaxeb"); setMobileNavOpen(false); }} className="block cursor-pointer">
-                    ჩვენ
-                  </span>
-                  <span onClick={() => { navigate("/About/Tanamshromlebi"); setMobileNavOpen(false); }} className="block cursor-pointer">
-                    თანამშრომლები
-                  </span>
-                </div>
-              </div>
-              <span onClick={() => { navigate("/Services"); setMobileNavOpen(false); }} className="block cursor-pointer">
-                სერვისები
-              </span>
-              <span onClick={() => { navigate("/Contact"); setMobileNavOpen(false); }} className="block cursor-pointer">
-                კონტაქტი
-              </span>
-              <button
-                onClick={() => setMobileNavOpen(false)}
-                className="w-full bg-blue-800 text-white py-2 rounded-xl mt-4 hover:bg-blue-600 transition"
-              >
-                დაჯავშვნა
-              </button>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -1,22 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "../components/Header";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Clock } from "lucide-react";
-import "../App.css";
+import "../App.css"
 
 export default function Contact() {
-  const [isLegacy, setIsLegacy] = useState(false);
-
-  useEffect(() => {
-    const match = navigator.userAgent.match(/Chrome\/(\d+)/);
-    if (match && parseInt(match[1], 10) <= 109) {
-      setIsLegacy(true);
-      document.body.classList.add("legacy");
-    }
-  }, []);
-
-  const Wrapper = isLegacy ? React.Fragment : motion.div;
-
   return (
     <div className="bg-[#121212] min-h-screen text-white">
       <div className="fixed top-0 w-full z-30">
@@ -25,60 +13,50 @@ export default function Contact() {
 
       <div className="relative w-full flex flex-col items-center justify-center pt-32 px-4 sm:px-6">
         <div className="max-w-3xl w-full mx-auto py-10">
-          <Wrapper
-            {...(!isLegacy && {
-              initial: { opacity: 0, y: 20 },
-              animate: { opacity: 1, y: 0 },
-              transition: { duration: 0.6 },
-            })}
-            className="text-3xl md:text-4xl font-bold text-center text-blue-400 mb-10"
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-bold text-center text-blue-400 mb-10 motion-slide"
           >
             დაგვიკავშირდით
-          </Wrapper>
+          </motion.h1>
 
           <div className="space-y-6 text-base md:text-lg text-gray-300">
-            <Wrapper
-              {...(!isLegacy && {
-                initial: { opacity: 0, x: -30 },
-                animate: { opacity: 1, x: 0 },
-                transition: { delay: 0.2, duration: 0.5 },
-              })}
-              className="flex items-start gap-3"
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="flex items-start gap-3 motion-slide"
             >
               <MapPin className="text-green-400 mt-1 shrink-0" />
               <p>ქ. თბილისი, ვაშლიჯვარი. მუხრან მაჭავარიანის ქ.1</p>
-            </Wrapper>
+            </motion.div>
 
-            <Wrapper
-              {...(!isLegacy && {
-                initial: { opacity: 0, x: -30 },
-                animate: { opacity: 1, x: 0 },
-                transition: { delay: 0.3, duration: 0.5 },
-              })}
-              className="flex items-start gap-3"
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="flex items-start gap-3 motion-slide"
             >
               <Phone className="text-blue-400 mt-1 shrink-0" />
               <p>ტელ: +995 555 73 73 42</p>
-            </Wrapper>
+            </motion.div>
 
-            <Wrapper
-              {...(!isLegacy && {
-                initial: { opacity: 0, x: -30 },
-                animate: { opacity: 1, x: 0 },
-                transition: { delay: 0.2, duration: 0.5 },
-              })}
-              className="flex items-start gap-3"
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="flex items-start gap-3 motion-slide"
             >
               <p>www.sache1.ge</p>
-            </Wrapper>
+            </motion.div>
 
-            <Wrapper
-              {...(!isLegacy && {
-                initial: { opacity: 0, x: -30 },
-                animate: { opacity: 1, x: 0 },
-                transition: { delay: 0.4, duration: 0.5 },
-              })}
-              className="flex items-start gap-3"
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="flex items-start gap-3 motion-slide"
             >
               <Clock className="text-yellow-400 mt-1 shrink-0" />
               <p>
@@ -89,16 +67,14 @@ export default function Contact() {
                 - შაბათი: 9:00 - 17:00 სთ.
                 <br />- კვირა და სადღესასწაულო დღეები: დასვენება.
               </p>
-            </Wrapper>
+            </motion.div>
           </div>
 
-          <Wrapper
-            {...(!isLegacy && {
-              initial: { opacity: 0, y: 30 },
-              animate: { opacity: 1, y: 0 },
-              transition: { delay: 0.6, duration: 0.6 },
-            })}
-            className="mt-10 w-full h-[300px] sm:h-[400px] rounded-xl overflow-hidden shadow-lg"
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+            className="mt-10 w-full h-[300px] sm:h-[400px] rounded-xl overflow-hidden shadow-lg motion-fade"
           >
             <iframe
               title="Company Location"
@@ -109,15 +85,13 @@ export default function Contact() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
-          </Wrapper>
+          </motion.div>
 
-          <Wrapper
-            {...(!isLegacy && {
-              initial: { opacity: 0, scale: 0.9 },
-              animate: { opacity: 1, scale: 1 },
-              transition: { delay: 0.7, duration: 0.4 },
-            })}
-            className="mt-10 text-center"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.7, duration: 0.4 }}
+            className="mt-10 text-center motion-scale"
           >
             <a
               href="tel:+995555737342"
@@ -125,7 +99,7 @@ export default function Contact() {
             >
               📞 დარეკეთ ახლავე
             </a>
-          </Wrapper>
+          </motion.div>
         </div>
       </div>
     </div>

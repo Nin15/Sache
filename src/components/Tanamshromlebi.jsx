@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "./Header";
 import Card from "./Card";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
-import "../App.css";
+import "../App.css"
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -33,32 +33,20 @@ const cardVariants = {
 };
 
 export default function Tanamshromlebi() {
-  const [isLegacy, setIsLegacy] = useState(false);
-
-  useEffect(() => {
-    const match = navigator.userAgent.match(/Chrome\/(\d+)/);
-    if (match && parseInt(match[1], 10) <= 109) {
-      setIsLegacy(true);
-      document.body.classList.add("legacy");
-    }
-  }, []);
-
-  const highlighted = [
-    {
-      name: "გრიგოლ მაღრაძე (გია)",
-      description: "20+ წლიანი გამოცდილება.",
-      image: "/images/worker1.jpg",
-      position: "დირექტორი",
-    },
-    {
-      name: "მამუკა კაპანაძე",
-      description: "15+ წლიანი გამოცდილება. აწყობილი აქვს 3000-ზე მეტი საჭის მექანიზმი.",
-      image: "/images/worker2.jpg",
-      position: "დირექტორის მოადგილე",
-    },
-  ];
-
-  const others = [
+  const workers = [
+    // {
+    //   name: "გრიგოლ მაღრაძე (გია)",
+    //   description: "20+ წლიანი გამოცდილება.",
+    //   image: "/images/worker1.jpg",
+    //   position: "დირექტორი",
+    // },
+    // {
+    //   name: "მამუკა კაპანაძე",
+    //   description:
+    //     "15+ წლიანი გამოცდილება. აწყობილი აქვს 3000-ზე მეტი საჭის მექანიზმი.",
+    //   image: "/images/worker2.jpg",
+    //   position: "დირექტორის მოადგილე",
+    // },
     {
       name: "რამაზ კელენჯერიძე (რეზო)",
       image: "/images/worker3.jpg",
@@ -75,6 +63,7 @@ export default function Tanamshromlebi() {
       image: "/images/worker5.jpg",
       position: "ხელოსანი",
     },
+
     {
       name: "გაგა სამხარაძე",
       description: "5+ წლიანი გამოცდილება.",
@@ -108,12 +97,23 @@ export default function Tanamshromlebi() {
   ];
 
   return (
-    <div className="w-full bg-black flex flex-col items-center justify-start min-h-screen">
+    <motion.div
+      initial="hidden"
+      animate="show"
+      exit="exit"
+      variants={containerVariants}
+      className="w-full bg-black flex flex-col items-center justify-start min-h-screen"
+    >
       <section className="fixed top-0 z-30 w-full">
         <Header />
       </section>
 
-      <div className="pt-32 text-center mb-10 px-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="pt-32 text-center mb-10 px-4"
+      >
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-400">
           ჩვენი გუნდი
         </h1>
@@ -121,48 +121,34 @@ export default function Tanamshromlebi() {
           პროფესიონალები, რომლებსაც შეგიძლიათ ენდოთ{" "}
           <Sparkles className="text-yellow-400" size={18} />
         </p>
-      </div>
-
-      {isLegacy ? (
-        <>
-          <div className="md:flex md:gap-20">
-            {highlighted.map((worker, index) => (
-              <Card key={index} {...worker} />
-            ))}
-          </div>
-          <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 mt-10 lg:px-10 pb-10 flex flex-wrap justify-center gap-21">
-            {others.map((worker, index) => (
-              <Card key={index} {...worker} />
-            ))}
-          </div>
-        </>
-      ) : (
-        <>
-          <motion.div
-            initial="hidden"
-            animate="show"
-            exit="exit"
-            variants={containerVariants}
-            className="md:flex md:gap-20"
-          >
-            {highlighted.map((worker, index) => (
-              <motion.div key={index} variants={cardVariants}>
-                <Card {...worker} />
-              </motion.div>
-            ))}
+      </motion.div>
+      <motion.div className=" md:flex md:gap-20  " variants={cardVariants}>
+        <Card
+          name="გრიგოლ მაღრაძე (გია)"
+          description="20+ წლიანი გამოცდილება."
+          position="დირექტორი"
+        />
+        <Card
+          name="მამუკა კაპანაძე"
+          description="15+ წლიანი გამოცდილება. აწყობილი აქვს 3000-ზე მეტი საჭის მექანიზმი."
+          position="დირექტორის მოადგილე"
+        />
+      </motion.div>
+      <motion.div
+        variants={containerVariants}
+        className="w-full max-w-[1200px] mx-auto px-4 sm:px-6  mt-21 lg:px-10 pb-10 flex flex-wrap justify-center gap-21"
+      >
+        {workers.map((worker, index) => (
+          <motion.div key={index} variants={cardVariants}>
+            <Card
+              name={worker.name}
+              description={worker.description}
+              image={worker.image}
+              position={worker.position}
+            />
           </motion.div>
-          <motion.div
-            variants={containerVariants}
-            className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 mt-10 lg:px-10 pb-10 flex flex-wrap justify-center gap-21"
-          >
-            {others.map((worker, index) => (
-              <motion.div key={index} variants={cardVariants}>
-                <Card {...worker} />
-              </motion.div>
-            ))}
-          </motion.div>
-        </>
-      )}
-    </div>
+        ))}
+      </motion.div>
+    </motion.div>
   );
 }
