@@ -28,7 +28,7 @@ export default function Header() {
             onMouseEnter={() => setMenuOpen(true)}
             onMouseLeave={() => setMenuOpen(false)}
           >
-            <span className="hover:scale-105 transition">ჩვენს შესახებ</span>
+            <span className="hover:scale-105 transition">ჩვენ შესახებ</span>
             <AnimatePresence>
               {menuOpen && (
                 <motion.div
@@ -43,13 +43,13 @@ export default function Header() {
                       className="hover:text-blue-700 transition"
                       onClick={() => navigate("/About/Chvensshesaxeb")}
                     >
-                      ჩვენ
+                      ჩვენი კომპანია
                     </span>
                     <span
                       className="hover:text-blue-700 transition"
                       onClick={() => navigate("/About/Tanamshromlebi")}
                     >
-                      თანამშრომლები
+                      ჩვენი გუნდი
                     </span>
                   </div>
                 </motion.div>

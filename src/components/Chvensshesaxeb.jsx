@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import Header from "./Header";
-import { motion, AnimatePresence } from "framer-motion";
-import "../App.css"
+import { motion } from "framer-motion";
 
 const paragraphs = [
   `შპს "საჭე" საქართველოში ავტოსერვისის სფეროში მოქმედი ლიდერი კომპანიაა, რომელიც საქმიანობას ეწევა 2011 წლიდან, ხოლო ამ კომპანიაში მოღვაწე მუშაკებისა და ავტოხელოსნების პროფესიონალიზმი წლების განმავლობაში მათ მიერ შეკეთებული ავტომობილების ხარისხითა და მადლიერი კლიენტების გამოხმაურებებითაა დადასტურებული.`,
+
   `შპს "საჭე" დასპეცილიზებულია საჭის მართვის მექანიზმის გამართულად მუშაობის უზრუნველსაყოფად და საბოლოო ჯამში ავტომობილის უსაფრთხო მოძრაობისთვის.`,
+
   `შპს "საჭე" აწარმოებს ყველა სახის საჭის მექანიზმის (მექანიკური, ჰიდრავლიკური, ელექტრო) მუშაობო დიაგნოსტიკას, უწესივრობის დადგენას, ამ უწესივრობის აღმოფხვრას (მოხსნა დაყენება, დევექტური ნაწილების აღდგენა, ახლით ან მეორადით შეცვლა) და მინიმუმ 6 თვიანი გარანტიის მიცემას.`,
 ];
 
 export default function Chvensshesaxeb() {
- 
+  const [index, setIndex] = useState(0);
+
+  const nextParagraph = () => {
+    setIndex((prev) => (prev + 1) % paragraphs.length);
+  };
 
   return (
     <motion.div
@@ -42,26 +47,31 @@ export default function Chvensshesaxeb() {
           შპს საჭე
         </motion.h1>
 
-        <div className="min-h-[160px] flex items-center justify-center mb-6 w-full">
-          <AnimatePresence mode="wait">
+        <div className="min-h-[160px] flex items-center justify-center mb-6 w-full relative">
+          {paragraphs.map((text, i) => (
             <motion.p
-              key={index}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
+              key={`paragraph-${i}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{
+                opacity: i === index ? 1 : 0,
+                y: i === index ? 0 : 20,
+                position: i === index ? "relative" : "absolute",
+              }}
               transition={{ duration: 0.6 }}
-              className="text-base sm:text-lg leading-relaxed p-4 rounded-3xl bg-gray-800/40 backdrop-blur-lg"
+              className={`${
+                i === index ? "block" : "hidden"
+              } text-base sm:text-lg leading-relaxed p-4 rounded-3xl bg-gray-800/40 backdrop-blur-lg`}
             >
-              {paragraphs[index]}
+              {text}
             </motion.p>
-          </AnimatePresence>
+          ))}
         </div>
 
         <button
           onClick={nextParagraph}
           className="mt-4 px-6 py-2 bg-blue-950 hover:bg-blue-900 rounded-xl transition-all duration-300"
         >
-          შემდეგი ({nextnum + 1})
+          შემდეგი ({index + 1})
         </button>
       </section>
     </motion.div>
