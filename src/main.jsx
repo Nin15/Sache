@@ -9,9 +9,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
 const match = navigator.userAgent.match(/Chrome\/(\d+)/);
-if (match && parseInt(match[1], 10) < 80) {
+if (match && parseInt(match[1], 10) <= 109) {
   document.body.classList.add("legacy");
 }
+
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
