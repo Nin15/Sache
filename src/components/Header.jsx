@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react"; 
+import "../App.css"
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);

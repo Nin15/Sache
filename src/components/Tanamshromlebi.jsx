@@ -3,6 +3,7 @@ import Header from "./Header";
 import Card from "./Card";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import "../App.css"
 
 const containerVariants = {
   hidden: { opacity: 0 },

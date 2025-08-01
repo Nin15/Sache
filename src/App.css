@@ -10,11 +10,167 @@ span {
   text-shadow: 1px 1px 2px black, 0 0 25px rgb(50, 38, 214),
     0 0 5px rgb(23, 19, 88);
   font-family: "BPG Banner ExtraSquare Caps", sans-serif;
-
 }
 
+.logotext {
+  font-family: "BPG Banner ExtraSquare Caps", sans-serif;
+}
 
-.logotext{
-font-family: "BPG Banner ExtraSquare Caps", sans-serif;
+/* These styles only apply if you add the `.legacy` class to <body> */
+body.legacy .backdrop-blur-md {
+  backdrop-filter: none;
+  background-color: rgba(0, 0, 0, 0.7);
+}
 
+body.legacy .fancy-shadow {
+  text-shadow: 1px 1px 2px #000;
+}
+
+body.legacy .blur-bg {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+body.legacy .scale-hover {
+  transform: none !important;
+  transition: none !important;
+}
+
+body.legacy .rounded-3xl {
+  border-radius: 1rem !important; 
+}
+
+/* ===== Legacy browser overrides ===== */
+body.legacy .backdrop-blur-md {
+  backdrop-filter: none;
+  background-color: rgba(55, 65, 81, 0.85); /* dark gray */
+}
+
+body.legacy .bg-gray-600\/60 {
+  background-color: rgba(75, 85, 99, 0.85); /* Tailwind gray-600 w/ opacity */
+}
+
+body.legacy .bg-gray-800\/40 {
+  background-color: rgba(31, 41, 55, 0.7); /* Tailwind gray-800 w/ opacity */
+}
+
+body.legacy .rounded-3xl,
+body.legacy .rounded-2xl,
+body.legacy .rounded-xl {
+  border-radius: 10px !important;
+}
+
+body.legacy .hover\:scale-105 {
+  transform: none !important;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+body.legacy .hover\:scale-105:hover {
+  background-color: #1e40af; /* Tailwind blue-800 hover */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* Dropdown fallback (if animations fail, ensure visibility) */
+body.legacy .legacy-menu {
+  display: block !important;
+  opacity: 1 !important;
+  position: absolute;
+  top: 2.5rem;
+}
+
+/* ===== Team Page Legacy Fixes ===== */
+body.legacy .gap-21 {
+  gap: 2rem !important; /* fallback for unsupported Tailwind custom gap */
+}
+
+body.legacy .mt-21 {
+  margin-top: 2rem !important;
+}
+
+body.legacy .rounded-4xl,
+body.legacy .rounded-3xl {
+  border-radius: 12px !important;
+}
+
+body.legacy .text-blue-400 {
+  color: #60a5fa; /* Tailwind fallback blue-400 */
+}
+
+body.legacy .text-gray-400 {
+  color: #9ca3af; /* ensure readability on washed-out screens */
+}
+
+/* Optional: disable Framer Motion animations in legacy for smoother fallback */
+body.legacy .card-anim {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* === Legacy fallback styles for Contact.jsx === */
+body.legacy .text-blue-400 {
+  color: #3b82f6 !important;
+}
+body.legacy .text-gray-300 {
+  color: #d1d5db !important;
+}
+body.legacy .text-yellow-400 {
+  color: #facc15 !important;
+}
+
+body.legacy .rounded-xl {
+  border-radius: 12px !important;
+}
+body.legacy .shadow-lg {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Disable animations for old Chrome */
+body.legacy .motion-slide,
+body.legacy .motion-fade,
+body.legacy .motion-scale {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+ 
+/* === Homepage legacy overrides === */
+body.legacy .motion-scale,
+body.legacy .motion-slide,
+body.legacy .motion-fade {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+body.legacy .text-\[\#848282\] {
+  color: #a3a3a3 !important; /* stronger gray for better visibility */
+}
+
+/* === Services page legacy overrides === */
+body.legacy .motion-slide,
+body.legacy .motion-scale {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+body.legacy .text-blue-400 {
+  color: #3b82f6 !important;
+}
+
+body.legacy .text-gray-200 {
+  color: #e5e7eb !important;
+}
+
+body.legacy .rounded-xl {
+  border-radius: 12px !important;
+}
+
+body.legacy .shadow-md {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Optional: turn off animate-pulse for legacy browsers */
+body.legacy .animate-pulse {
+  animation: none !important;
 }

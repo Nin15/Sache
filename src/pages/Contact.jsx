@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Clock } from "lucide-react";
+import "../App.css"
 
 export default function Contact() {
   return (
@@ -16,7 +17,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-4xl font-bold text-center text-blue-400 mb-10"
+            className="text-3xl md:text-4xl font-bold text-center text-blue-400 mb-10 motion-slide"
           >
             დაგვიკავშირდით
           </motion.h1>
@@ -26,7 +27,7 @@ export default function Contact() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="flex items-start gap-3"
+              className="flex items-start gap-3 motion-slide"
             >
               <MapPin className="text-green-400 mt-1 shrink-0" />
               <p>ქ. თბილისი, ვაშლიჯვარი. მუხრან მაჭავარიანის ქ.1</p>
@@ -36,7 +37,7 @@ export default function Contact() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="flex items-start gap-3"
+              className="flex items-start gap-3 motion-slide"
             >
               <Phone className="text-blue-400 mt-1 shrink-0" />
               <p>ტელ: +995 555 73 73 42</p>
@@ -45,8 +46,17 @@ export default function Contact() {
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="flex items-start gap-3 motion-slide"
+            >
+              <p>www.sache1.ge</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
-              className="flex items-start gap-3"
+              className="flex items-start gap-3 motion-slide"
             >
               <Clock className="text-yellow-400 mt-1 shrink-0" />
               <p>
@@ -64,7 +74,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="mt-10 w-full h-[300px] sm:h-[400px] rounded-xl overflow-hidden shadow-lg"
+            className="mt-10 w-full h-[300px] sm:h-[400px] rounded-xl overflow-hidden shadow-lg motion-fade"
           >
             <iframe
               title="Company Location"
@@ -81,7 +91,7 @@ export default function Contact() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.7, duration: 0.4 }}
-            className="mt-10 text-center"
+            className="mt-10 text-center motion-scale"
           >
             <a
               href="tel:+995555737342"
