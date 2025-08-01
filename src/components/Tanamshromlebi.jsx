@@ -122,7 +122,7 @@ export default function Tanamshromlebi() {
           <Sparkles className="text-yellow-400" size={18} />
         </p>
       </motion.div>
-      <motion.div className=" md:flex md:gap-20  " variants={cardVariants}>
+      <motion.div className=" md:flex mt-40 md:gap-40  " variants={cardVariants}>
         <Card
           name="გრიგოლ მაღრაძე (გია)"
           description="20+ წლიანი გამოცდილება."
@@ -136,7 +136,7 @@ export default function Tanamshromlebi() {
       </motion.div>
       <motion.div
         variants={containerVariants}
-        className="w-full max-w-[1200px] mx-auto px-4 sm:px-6  mt-21 lg:px-10 pb-10 flex flex-wrap justify-center gap-21"
+        className="w-full  mx-auto px-4 sm:px-6  mt-41 lg:px-10 pb-10 flex flex-wrap justify-center gap-40"
       >
         {workers.map((worker, index) => (
           <motion.div key={index} variants={cardVariants}>
