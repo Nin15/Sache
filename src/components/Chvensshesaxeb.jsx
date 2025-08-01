@@ -10,13 +10,7 @@ const paragraphs = [
 ];
 
 export default function Chvensshesaxeb() {
-  const [index, setIndex] = useState(0);
-  const [nextnum, setNextnum] = useState(0);
-
-  const nextParagraph = () => {
-    setIndex((prev) => (prev + 1) % paragraphs.length);
-    setNextnum((prev) => (prev + 1) % paragraphs.length);
-  };
+ 
 
   return (
     <motion.div
