@@ -3,7 +3,7 @@ import Header from "./Header";
 import Card from "./Card";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
-import "../App.css"
+import "../App.css";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -32,7 +32,7 @@ const cardVariants = {
   },
 };
 
-export default function Tanamshromlebi() {
+export default function Tanamshromlebi({ showHeader = true }) {
   const workers = [
     // {
     //   name: "გრიგოლ მაღრაძე (გია)",
@@ -99,18 +99,20 @@ export default function Tanamshromlebi() {
   return (
     <motion.div
       initial="hidden"
-      animate="show"
+     whileInView="show"
       exit="exit"
       variants={containerVariants}
-      className="w-full bg-black flex flex-col items-center justify-start min-h-screen"
+      className="w-full bg-[#121212] flex flex-col items-center justify-start min-h-screen"
     >
-      <section className="fixed top-0 z-30 w-full">
-        <Header />
-      </section>
+      {showHeader && (
+        <section className="fixed top-0 z-30 w-full">
+          <Header />
+        </section>
+      )}
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+       whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="pt-32 text-center mb-10 px-4"
       >
@@ -122,7 +124,10 @@ export default function Tanamshromlebi() {
           <Sparkles className="text-yellow-400" size={18} />
         </p>
       </motion.div>
-      <motion.div className=" md:flex mt-40 md:gap-40  " variants={cardVariants}>
+      <motion.div
+        className=" md:flex mt-40 md:gap-40  "
+        variants={cardVariants}
+      >
         <Card
           name="გრიგოლ მაღრაძე (გია)"
           description="20+ წლიანი გამოცდილება."

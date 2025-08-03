@@ -1,80 +1,128 @@
 import React from "react";
 import Header from "../components/Header";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { MapPin, Phone, Clock } from "lucide-react";
 import "../App.css";
 
-export default function Contact() {
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, x: -36, skewY: 3 },
+  show: {
+    opacity: 1,
+    x: 0,
+    skewY: 0,
+    transition: { type: "spring", stiffness: 320, damping: 26 },
+  },
+  exit: { opacity: 0, x: 36, skewY: -3 },
+};
+
+export default function Contact({ showHeader = true }) {
   return (
     <div className="bg-[#121212] min-h-screen text-white">
-      <div className="fixed top-0 w-full z-30">
-        <Header />
-      </div>
+      {showHeader && (
+        <div className="fixed top-0 w-full z-30">
+          <Header />
+        </div>
+      )}
 
       <div className="relative w-full flex flex-col items-center justify-center pt-32 px-4 sm:px-6">
         <div className="max-w-3xl w-full mx-auto py-10">
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl md:text-4xl font-bold text-center text-blue-400 mb-10 motion-slide"
+            initial={{ opacity: 0, y: 34, skewY: 6 }}
+            whileInView={{ opacity: 1, y: 0, skewY: 0 }}
+            transition={{ type: "spring", stiffness: 230, damping: 22 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold text-center text-blue-400 mb-10"
           >
             დაგვიკავშირდით
           </motion.h1>
 
-          <div className="space-y-6 text-base md:text-lg text-gray-300">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="flex items-start gap-3 motion-slide"
-            >
-              <MapPin className="text-green-400 mt-1 shrink-0" />
-              <p>ქ. თბილისი, ვაშლიჯვარი. მუხრან მაჭავარიანის ქ.1</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className="flex items-start gap-3 motion-slide"
-            >
-              <Phone className="text-blue-400 mt-1 shrink-0" />
-              <p>ტელ: +995 555 73 73 42</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="flex items-start gap-3 motion-slide"
-            >
-              <p>www.sache1.ge</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              className="flex items-start gap-3 motion-slide"
-            >
-              <Clock className="text-yellow-400 mt-1 shrink-0" />
-              <p>
-                მუშაობის საათები:
-                <br />
-                - ორშაბათი-პარასკევი: 9:00 - 19:00 სთ.
-                <br />
-                - შაბათი: 9:00 - 17:00 სთ.
-                <br />- კვირა და სადღესასწაულო დღეები: დასვენება.
-              </p>
-            </motion.div>
-          </div>
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            className="space-y-6 text-base md:text-lg text-gray-300"
+          >
+            <AnimatePresence>
+              <motion.div
+                variants={item}
+                exit="exit"
+                className="flex items-start gap-3"
+              >
+                <MapPin className="text-green-400 mt-1 shrink-0" />
+                <p>ქ. თბილისი, ვაშლიჯვარი. მუხრან მაჭავარიანის ქ.1</p>
+              </motion.div>
+              <motion.a
+                variants={item}
+                exit="exit"
+                href="tel:+995555737342"
+                className="flex items-start gap-3 group cursor-pointer hover:bg-[#203b42] px-2 py-1 rounded-lg transition"
+                tabIndex={0}
+                style={{ textDecoration: "none" }}
+                whileHover={{
+                  scale: 1.025,
+                  x: 4,
+                  boxShadow: "0 4px 18px 0 rgba(37,120,211,0.09)",
+                }}
+              >
+                <Phone className="text-blue-400 mt-1 shrink-0 group-hover:animate-bounce" />
+                <p className="font-bold text-white">ტელ: +995 555 73 73 42</p>
+              </motion.a>
+              <motion.div
+                variants={item}
+                exit="exit"
+                className="flex items-start gap-3"
+              >
+                <span className="mt-1 text-yellow-500 font-bold">🌐</span>
+                <a
+                  href="https://www.sache1.ge"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-blue-300 transition"
+                >
+                  www.sache1.ge
+                </a>
+              </motion.div>
+              <motion.div
+                variants={item}
+                exit="exit"
+                className="flex items-start gap-3"
+              >
+                <Clock className="text-yellow-400 mt-1 shrink-0" />
+                <p>
+                  მუშაობის საათები:
+                  <br />
+                  - ორშაბათი-პარასკევი: 9:00 - 19:00 სთ.
+                  <br />
+                  - შაბათი: 9:00 - 17:00 სთ.
+                  <br />- კვირა და სადღესასწაულო დღეები: დასვენება.
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-            className="mt-10 w-full h-[300px] sm:h-[400px] rounded-xl overflow-hidden shadow-lg motion-fade"
+            initial={{ opacity: 0, scale: 0.88, rotate: 3 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 220,
+              damping: 18,
+              delay: 0.8,
+            }}
+            viewport={{ once: true }}
+            className="mt-10 w-full h-[300px] sm:h-[400px] rounded-xl overflow-hidden shadow-lg"
           >
             <iframe
               title="Company Location"
@@ -88,14 +136,21 @@ export default function Contact() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.7, duration: 0.4 }}
-            className="mt-10 text-center motion-scale"
+            initial={{ opacity: 0, scale: 0.9, y: 10 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 340,
+              damping: 16,
+              delay: 1.05,
+            }}
+            viewport={{ once: true }}
+            className="mt-10 text-center"
           >
             <a
               href="tel:+995555737342"
-              className="inline-block px-6 py-3 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-bold transition"
+              className="inline-block px-7 py-3 rounded-full bg-blue-500 hover:bg-blue-600 shadow-xl text-white text-sm font-bold tracking-wide transition transform hover:scale-105 focus:scale-105 active:scale-95"
+              tabIndex={0}
             >
               📞 დარეკეთ ახლავე
             </a>
