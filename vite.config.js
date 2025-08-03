@@ -4,6 +4,7 @@ import legacy from "@vitejs/plugin-legacy";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
+  base: "/",
   plugins: [
     react(),
     tailwindcss(),
