@@ -14,13 +14,13 @@ export default function Homepage() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="bg-gradient-to-br from-red-800 via-gray-900 to-black text-white w-full h-screen flex flex-col">
+    <div className="bg-gradient-to-br from-blue-800 via-white to-yellow-400 text-white w-full h-screen flex flex-col">
       <Header />
 
       <div className="flex-grow flex flex-col h-screen justify-center items-center relative px-4 text-center">
         <motion.img
-          initial={{ scale: 0.8, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
+          initial={{ scale: 1.2, opacity: 0 }}
+          whileInView={{ scale: 1.4, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           src="/Logo.png"
           alt="Logo"
@@ -31,9 +31,9 @@ export default function Homepage() {
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-3xl sm:text-4xl md:text-5xl logotext font-bold text-red-500 mb-2 motion-slide"
+          className="text-3xl sm:text-4xl md:text-5xl logotext font-bold text-blue-500 mb-2 motion-slide"
         >
-          შპს საჭე
+           საჭე
         </motion.h1>
 
         <motion.p
@@ -49,11 +49,11 @@ export default function Homepage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 1 }}
-          className="text-lg sm:text-xl md:text-2xl font-medium motion-fade"
+          className="text-lg text-black sm:text-xl md:text-2xl font-medium motion-fade"
         >
           ირჩევთ{" "}
-          <span className="text-red-500 logotext font-semibold">
-            შპს საჭეს?
+          <span className="text-blue-500 logotext font-semibold">
+             საჭეს?
           </span>{" "}
           — ირჩევთ სიმშვიდეს.
         </motion.h2>
