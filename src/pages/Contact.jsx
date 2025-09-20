@@ -53,7 +53,7 @@ export default function Contact({ showHeader = true }) {
             >
               <span className="mt-1 text-yellow-500 font-bold">🌐</span>
               <a
-                href="https://www.sache1.ge"
+                href="https://www.sacheplus.ge"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:text-blue-300 transition"

@@ -102,7 +102,7 @@ export default function Tanamshromlebi({ showHeader = true }) {
      whileInView="show"
       exit="exit"
       variants={containerVariants}
-      className="w-full bg-[#121212] flex flex-col items-center justify-start min-h-screen"
+      className="w-full bg-gradient-to-br to-blue-800 via-white from-yellow-400 flex flex-col items-center justify-start min-h-screen"
     >
       {showHeader && (
         <section className="fixed top-0 z-30 w-full">
