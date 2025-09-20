@@ -58,7 +58,7 @@ export default function Contact({ showHeader = true }) {
                 rel="noopener noreferrer"
                 className="underline hover:text-blue-300 transition"
               >
-                www.sache1.ge
+                www.sacheplus.ge
               </a>
             </motion.div>
 
