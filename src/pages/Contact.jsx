@@ -86,14 +86,14 @@ export default function Contact({ showHeader = true }) {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="mt-10 w-full h-[300px] sm:h-[400px] rounded-xl overflow-hidden shadow-lg motion-fade"
           >
+           
             <iframe
-              title="Company Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2976.417956892042!2d44.759613800000004!3d41.7546457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4044730074b94d09%3A0xbe542c60ce8ad852!2sSache%20(gia)!5e0!3m2!1sen!2sge!4v1754077218438!5m2!1sen!2sge"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1051.7755932239522!2d44.75898703394702!3d41.75477813350631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4044730074b94d09%3A0xbe542c60ce8ad852!2sSache%20(gia)!5e1!3m2!1sen!2sge!4v1758372153714!5m2!1sen!2sge"
               width="100%"
               height="100%"
-              allowFullScreen=""
+              allowfullscreen=""
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </motion.div>
 
